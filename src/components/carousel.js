@@ -1,7 +1,6 @@
 import Slider from "react-slick";
 import './../assets/styles/components/carousel.scss';
 import { fetchImageOriginal, fetchImageW500 } from "../api";
-import Swal from "sweetalert2";
 import { getVideos } from "../redux/actions";
 import { connect } from 'react-redux';
 

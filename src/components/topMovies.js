@@ -60,6 +60,7 @@ function TopMovies({ listMovies, name }) {
                         <div key={i} className="p-3">
                             <div className="home--listFilm__image w-full cursor-pointer relative bx transition">
                                 <img className="rounded transition"
+                                    alt="movie"
                                     src={`${fetchImageW500(movie.backdrop_path)}`}
                                 />
                             </div>
