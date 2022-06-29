@@ -1,6 +1,7 @@
-import { types } from './../types';
+import { types } from '../types';
 
 const initialState = {
+    loading: true,
     popularMovies: [],
     topRateMovies: [],
     upcomingMovies: [],
@@ -11,32 +12,38 @@ const fetchDataMovies = (state = initialState, action) => {
         case types.GET_LIST_POPULAR_MOVIES:
             return {
                 ...state,
+                loading: true
             };
         case types.GET_LIST_POPULAR_MOVIES_SUCCESS:
             const popular = action.payload.data.results
             return {
                 ...state,
-                popularMovies: popular
+                popularMovies: popular,
+                loading: false
             };
         case types.GET_LIST_TOPRATE_MOVIES:
             return {
                 ...state,
+                loading: true
             };
         case types.GET_LIST_TOPRATE_MOVIES_SUCCESS:
             const topRate = action.payload.data.results
             return {
                 ...state,
-                topRateMovies: topRate
+                topRateMovies: topRate,
+                loading: false
             };
         case types.GET_LIST_UPCOMING_MOVIES:
             return {
                 ...state,
+                loading: true
             };
         case types.GET_LIST_UPCOMING_MOVIES_SUCCESS:
             const upcoming = action.payload.data.results
             return {
                 ...state,
-                upcomingMovies: upcoming
+                upcomingMovies: upcoming,
+                loading: false
             };
         default:
             return state;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import Header from './components/header';
 import Carousel from './components/carousel';
@@ -6,6 +6,7 @@ import TopMovies from './components/topMovies';
 import './assets/styles/globalStyles.scss';
 import { getListPopularMovies, getListTopRateMovies, getListUpcomingMovies } from './redux/actions';
 import Footer from './components/footer';
+import Loading from './components/loading';
 
 
 function App({
@@ -14,33 +15,49 @@ function App({
   getListTopRateMovies,
   topRateMovies,
   getListUpcomingMovies,
-  upcomingMovies }) {
+  upcomingMovies,
+  loading }) {
+
+  const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
     getListPopularMovies();
     getListTopRateMovies();
     getListUpcomingMovies();
   }, [])
+
+  if (!loading) {
+    setTimeout(() => {
+      setShowLoading(false);
+    }, 10000)
+  }
+
+  console.log(loading);
   return (
     <React.Fragment>
+      <div className='relative'>
 
-      {/* HEADER */}
-      <Header />
+        {/* HEADER */}
+        <Header />
 
-      {/* CAROUSEL */}
-      <Carousel listMovies={popularMovies} />
+        {/* CAROUSEL */}
+        <Carousel listMovies={popularMovies} />
 
-      {/* LISTFILM */}
-      <TopMovies listMovies={popularMovies} name={'Popular'} />
+        {/* LISTFILM */}
+        <TopMovies listMovies={popularMovies} name={'Popular'} />
 
-      {/* LISTFILM */}
-      <TopMovies listMovies={topRateMovies} name={'Top Rate'} />
+        {/* LISTFILM */}
+        <TopMovies listMovies={topRateMovies} name={'Top Rate'} />
 
-      {/* LISTFILM */}
-      <TopMovies listMovies={upcomingMovies} name={'Upcoming'} />
+        {/* LISTFILM */}
+        <TopMovies listMovies={upcomingMovies} name={'Upcoming'} />
 
-      {/* FOOTER */}
-      <Footer />
+        {/* FOOTER */}
+        <Footer />
+
+        {/* LOADING */}
+        {showLoading && <Loading />}
+      </div>
 
     </React.Fragment>
   );
@@ -48,6 +65,7 @@ function App({
 
 const mapStateToProps = (state) => {
   return {
+    loading: state.movies.loading,
     popularMovies: state.movies.popularMovies,
     topRateMovies: state.movies.topRateMovies,
     upcomingMovies: state.movies.upcomingMovies,

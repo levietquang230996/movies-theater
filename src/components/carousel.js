@@ -1,23 +1,20 @@
 import Slider from "react-slick";
 import './../assets/styles/components/carousel.scss';
 import { fetchImageOriginal, fetchImageW500 } from "../api";
+import Swal from "sweetalert2";
+import { getVideos } from "../redux/actions";
+import { connect } from 'react-redux';
+
 // import img1 from './../assets/images/slide_cinema3.jpg'
 
-const DisplayNoneArrow = (props) => <div
-    style={{ ...props.style, display: "none" }} />
 
-const settings = {
-    dots: false,
-    infinite: false,
-    autoplay: false,
-    speed: 900,
-    nextArrow: <DisplayNoneArrow />,
-    prevArrow: <DisplayNoneArrow />
-};
+const handleGetVideo = (id, getVideos) => {
+    getVideos(id);
+}
 
-const Slide = ({ sld, i }) => (
-    <div className="" key={i}>
-        <div className="bg_carousel min-h-[650px] h-full md:h-screen md:max-h-[850px] z-10"
+const Slide = ({ sld, getVideos, videos }) => (
+    <div className="">
+        <div className="bg_carousel min-h-[650px] h-full xl:h-screen xl:max-h-[850px] z-10"
             style={{ backgroundImage: `url(${fetchImageOriginal(sld.backdrop_path)})` }} >
             <div className="bg_carousel--content md:absolute cursor-grab
                                 container m-auto xl:max-w-screen-xl md:bottom-0 md:left-1/2  
@@ -31,12 +28,15 @@ const Slide = ({ sld, i }) => (
                         <p className="bg_carousel--overview text-md my-4 md:my-12">
                             {sld.overview}
                         </p>
-                        <button className="bg_carousel--btnDetail my-6 md:my-4 py-1 rounded-full
+                        <button className="bg_carousel--btnDetail my-6 md:my-4 py-1 rounded-full cursor-no-drop
                                             px-9 md:px-14 duration-150 ease-linear font-bold tracking-wider">
                             Detail
                         </button>
-                        <button className="bg_carousel--btnTrailer md:ml-4 py-1 rounded-full 
-                                            px-9 md:px-14 ml-2 hover:text-white hover:border-white duration-150 ease-linear font-bold tracking-wider border-2 border-solid border-white">
+                        <button
+                            onClick={() => handleGetVideo(sld.id, getVideos)}
+                            className="bg_carousel--btnTrailer md:ml-4 py-1 rounded-full 
+                                            px-9 md:px-14 ml-2 hover:text-white hover:border-white duration-150 ease-linear 
+                                            font-bold tracking-wider border-2 border-solid border-white">
                             Trailer
                         </button>
                     </div>
@@ -54,15 +54,39 @@ const Slide = ({ sld, i }) => (
     </div>
 )
 
+const DisplayNoneArrow = (props) => <div style={{ ...props.style, display: "none" }} />
 
-function Carousel({ listMovies }) {
+const settings = {
+    dots: false,
+    infinite: false,
+    autoplay: true,
+    speed: 900,
+    nextArrow: <DisplayNoneArrow />,
+    prevArrow: <DisplayNoneArrow />
+};
+
+function Carousel({ listMovies, getVideos, videos }) {
     return (
-        <div className="home--carousel bg-black text-white bg_carousel min-h-[650px] h-full md:h-screen md:max-h-[850px]">
+        <div className="home--carousel bg-black text-white bg_carousel min-h-[650px] h-full xl:h-screen xl:max-h-[850px]">
             <Slider {...settings} >
-                {listMovies.map((sld, i) => i < 10 ? <Slide key={i} sld={sld} i={i} /> : null)}
+                {listMovies.map((sld, i) => i < 10 ?
+                    <Slide key={i} getVideos={getVideos} videos={videos} sld={sld} /> : null)}
             </Slider>
         </div >
     );
 }
 
-export default Carousel;
+const mapStateToProps = (state) => {
+    return {
+        videos: state.movie.videos
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getVideos: (id) => dispatch(getVideos(id))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carousel);

@@ -1,5 +1,5 @@
-export const image_full_address = 'https://image.tmdb.org/t/p/original';
-export const image_w500_address = 'https://image.tmdb.org/t/p/w500';
+// export const image_full_address = 'https://image.tmdb.org/t/p/original';
+// export const image_w500_address = 'https://image.tmdb.org/t/p/w500';
 
 const API_KEY = '44a58b503e188dde40db869493f240a0';
 // 14ccdb96456935bbb41591e99697d262
@@ -20,3 +20,6 @@ export const fetchSingleMovieCredits = (movieId) =>
 
 export const fetchImageOriginal = (imageUrl) => `https://image.tmdb.org/t/p/original${imageUrl}`;
 export const fetchImageW500 = (imageUrl) => `https://image.tmdb.org/t/p/w500${imageUrl}`;
+
+export const fetchVideos = (id) => `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+

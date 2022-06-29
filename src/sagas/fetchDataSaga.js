@@ -39,7 +39,7 @@ function* ayscFetchUpcomingtMovies() {
 }
 
 
-export function* watchFetchDataSaga() {
+export function* watchFetchDataMoviesSaga() {
     yield takeEvery(types.GET_LIST_POPULAR_MOVIES, ayscFetchPopularMovies)
     yield takeEvery(types.GET_LIST_TOPRATE_MOVIES, ayscFetchTopRateMovies)
     yield takeEvery(types.GET_LIST_UPCOMING_MOVIES, ayscFetchUpcomingtMovies)

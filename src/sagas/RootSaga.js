@@ -1,10 +1,12 @@
 import { all } from 'redux-saga/effects';
+import { watchFetchDataDetailMovieSaga } from './fetchDataDetailMovieSaga';
 
-import { watchFetchDataSaga } from './fetchDataSaga';
+import { watchFetchDataMoviesSaga } from './fetchDataSaga';
 
 export default function* RootSaga() {
 
     yield all([
-        watchFetchDataSaga()
+        watchFetchDataMoviesSaga(),
+        watchFetchDataDetailMovieSaga()
     ])
 }

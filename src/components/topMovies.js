@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import { fetchImageW500 } from "../api";
-
+import '../assets/styles/components/topMovies.scss';
 
 const DisplayNoneArrow = (props) => <div style={{ ...props.style, display: "none" }} />
 
@@ -58,9 +58,11 @@ function TopMovies({ listMovies, name }) {
                 <Slider {...settings}>
                     {listMovies.map((movie, i) =>
                         <div key={i} className="p-3">
-                            <img className="home--listFilm__ image w-full rounded cursor-pointer"
-                                src={`${fetchImageW500(movie.poster_path)}`}
-                            />
+                            <div className="home--listFilm__image w-full cursor-pointer relative bx transition">
+                                <img className="rounded transition"
+                                    src={`${fetchImageW500(movie.backdrop_path)}`}
+                                />
+                            </div>
                             <p className="font-bold text-center mt-3 cursor-pointer">{movie.original_title}</p>
                         </div>
                     )}

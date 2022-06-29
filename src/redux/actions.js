@@ -42,3 +42,17 @@ export function getListUpcomingMoviesSuccess(payload) {
     }
 }
 
+export function getVideos(payload) {
+    return {
+        type: types.GET_VIDEOS,
+        payload
+    }
+}
+
+export function getVideosSuccess(payload) {
+    return {
+        type: types.GET_VIDEOS_SUCCESS,
+        payload
+    }
+}
+

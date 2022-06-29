@@ -27,13 +27,13 @@ function Header() {
                     </div>
                     <div className="movie__header-logo grid grid-cols-3 text-center">
                         <div className="px-1 md:px-2">
-                            <span className="cursor-pointer font-bold text-lg md:text-2xl">Home</span>
+                            <span className="cursor-pointer font-bold text-lg md:text-2xl hover:text-red-500">Home</span>
                         </div>
                         <div className="px-1 md:px-2">
-                            <span className="cursor-pointer font-bold text-lg md:text-2xl">Movies</span>
+                            <span className="cursor-pointer font-bold text-lg md:text-2xl hover:text-red-500">Movies</span>
                         </div>
                         <div className="px-1 md:px-2">
-                            <span className="cursor-pointer font-bold text-lg md:text-2xl">TV Series</span>
+                            <span className="cursor-pointer font-bold text-lg md:text-2xl hover:text-red-500">TV Series</span>
                         </div>
                     </div>
                 </div>

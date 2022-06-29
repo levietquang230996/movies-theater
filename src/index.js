@@ -8,6 +8,7 @@ import './assets/styles/input.css';
 import store from './redux/store';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'sweetalert2/src/sweetalert2.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
