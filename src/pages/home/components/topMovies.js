@@ -58,13 +58,13 @@ function TopMovies({ listMovies, name }) {
                 <Slider {...settings}>
                     {listMovies.map((movie, i) =>
                         <div key={i} className="p-3">
-                            <Link to={`movie/${movie.id}`}><div className="home--listFilm__image w-full cursor-pointer relative bx transition">
+                            <Link to={`/movies-theater/movie/${movie.id}`}><div className="home--listFilm__image w-full cursor-pointer relative bx transition">
                                 <img className="rounded transition"
                                     alt="movie"
                                     src={`${fetchImageW500(movie.poster_path)}`}
                                 />
                             </div></Link>
-                            <p className="font-bold text-center mt-3 cursor-pointer"><Link to={`movie/${movie.id}`}>{movie.original_title}</Link></p>
+                            <p className="font-bold text-center mt-3 cursor-pointer"><Link to={`/movies-theater/movie/${movie.id}`}>{movie.original_title}</Link></p>
                         </div>
                     )}
                 </Slider>

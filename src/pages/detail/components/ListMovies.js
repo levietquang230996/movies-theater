@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import { fetchImageW500 } from "../../../api";
+import { Link } from 'react-router-dom';
 
 function ListMovies({ popularMovies }) {
     const DisplayNoneArrow = (props) => <div style={{ ...props.style, display: "none" }} />
@@ -49,12 +50,12 @@ function ListMovies({ popularMovies }) {
             <Slider {...settings}>
                 {popularMovies.map((movie, i) =>
                     <div key={i} className="p-3">
-                        <div className=" w-full cursor-pointer relative bx transition">
+                        <Link to={`/movies-theater/movie/${movie.id}`}><div className=" w-full cursor-pointer relative bx transition">
                             <img className="rounded transition"
                                 alt="movie"
                                 src={`${fetchImageW500(movie.poster_path)}`}
                             />
-                        </div>
+                        </div></Link>
                         <p className="font-bold text-center mt-3 cursor-pointer text-white">{movie.original_title}</p>
                     </div>
                 )}

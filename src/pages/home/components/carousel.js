@@ -28,7 +28,7 @@ const Slide = ({ sld, getVideo }) => (
                         </p>
                         <button className="bg_carousel--btnDetail my-6 md:my-4 py-1 rounded-full cursor-pointer
                                             px-9 md:px-14 duration-150 ease-linear font-bold tracking-wider">
-                            <Link to={`/movie/${sld.id}`}>Detail</Link>
+                            <Link to={`/movies-theater/movie/${sld.id}`}>Detail</Link>
                         </button>
                         <button
                             onClick={() => handleGetVideo(sld.id, getVideo)}

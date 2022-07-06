@@ -10,7 +10,7 @@ function Footer() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 text-center md:text-left gap-0 md:gap-4 ">
                         <div>
-                            <p><Link to='/'>Home</Link></p>
+                            <p><Link to='/movies-theater/'>Home</Link></p>
                             <p>Term of services</p>
                             <p>Contact us</p>
                             <p>About us</p>

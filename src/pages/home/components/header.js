@@ -24,11 +24,11 @@ function Header() {
             ${bgTransparent ? ' bg-transparent' : ' bg-black'}`}>
                 <div className="container m-auto xl:max-w-screen-xl p-4 flex justify-between">
                     <div className="movie__header-logo font-bold text-lg md:text-2xl">
-                        <Link to='/'>Movies <i className='bx bx-camera-movie text-[18px] md:text-[23px]'></i></Link>
+                        <Link to='/movies-theater/'>Movies <i className='bx bx-camera-movie text-[18px] md:text-[23px]'></i></Link>
                     </div>
                     <div className="movie__header-logo grid grid-cols-3 text-center">
                         <div className="px-1 md:px-2">
-                            <Link to='/'><span className="cursor-pointer font-bold text-lg md:text-2xl hover:text-red-500">
+                            <Link to='/movies-theater/'><span className="cursor-pointer font-bold text-lg md:text-2xl hover:text-red-500">
                                 Home</span></Link>
                         </div>
                         <div className="px-1 md:px-2">
