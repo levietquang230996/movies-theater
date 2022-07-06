@@ -1,17 +1,16 @@
 import Slider from "react-slick";
-import './../assets/styles/components/carousel.scss';
-import { fetchImageOriginal, fetchImageW500 } from "../api";
-import { getVideos } from "../redux/actions";
+import '../../../assets/styles/pages/home/carousel.scss';
+import { fetchImageOriginal, fetchImageW500 } from "../../../api";
+import { getVideo } from "../../../redux/actions";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-// import img1 from './../assets/images/slide_cinema3.jpg'
 
-
-const handleGetVideo = (id, getVideos) => {
-    getVideos(id);
+const handleGetVideo = (id, getVideo) => {
+    getVideo(id);
 }
 
-const Slide = ({ sld, getVideos, videos }) => (
+const Slide = ({ sld, getVideo }) => (
     <div className="">
         <div className="bg_carousel min-h-[650px] h-full xl:h-screen xl:max-h-[850px] z-10"
             style={{ backgroundImage: `url(${fetchImageOriginal(sld.backdrop_path)})` }} >
@@ -27,12 +26,12 @@ const Slide = ({ sld, getVideos, videos }) => (
                         <p className="bg_carousel--overview text-md my-4 md:my-12">
                             {sld.overview}
                         </p>
-                        <button className="bg_carousel--btnDetail my-6 md:my-4 py-1 rounded-full cursor-no-drop
+                        <button className="bg_carousel--btnDetail my-6 md:my-4 py-1 rounded-full cursor-pointer
                                             px-9 md:px-14 duration-150 ease-linear font-bold tracking-wider">
-                            Detail
+                            <Link to={`/movie/${sld.id}`}>Detail</Link>
                         </button>
                         <button
-                            onClick={() => handleGetVideo(sld.id, getVideos)}
+                            onClick={() => handleGetVideo(sld.id, getVideo)}
                             className="bg_carousel--btnTrailer md:ml-4 py-1 rounded-full 
                                             px-9 md:px-14 ml-2 hover:text-white hover:border-white duration-150 ease-linear 
                                             font-bold tracking-wider border-2 border-solid border-white">
@@ -64,12 +63,12 @@ const settings = {
     prevArrow: <DisplayNoneArrow />
 };
 
-function Carousel({ listMovies, getVideos, videos }) {
+function Carousel({ listMovies, getVideo }) {
     return (
-        <div className="home--carousel bg-black text-white bg_carousel min-h-[650px] h-full xl:h-screen xl:max-h-[850px]">
+        <div className="bg-black text-white bg_carousel min-h-[650px] h-full xl:h-screen xl:max-h-[850px]">
             <Slider {...settings} >
                 {listMovies.map((sld, i) => i < 10 ?
-                    <Slide key={i} getVideos={getVideos} videos={videos} sld={sld} /> : null)}
+                    <Slide key={i} getVideo={getVideo} sld={sld} /> : null)}
             </Slider>
         </div >
     );
@@ -83,7 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getVideos: (id) => dispatch(getVideos(id))
+        getVideo: (id) => dispatch(getVideo(id))
     }
 }
 

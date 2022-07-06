@@ -42,16 +42,58 @@ export function getListUpcomingMoviesSuccess(payload) {
     }
 }
 
-export function getVideos(payload) {
+// GET A VIDEO
+export function getVideo(payload) {
     return {
-        type: types.GET_VIDEOS,
+        type: types.GET_VIDEO_MOVIE,
+        payload
+    }
+}
+export function getVideoSuccess(payload) {
+    return {
+        type: types.GET_VIDEO_MOVIE_SUCCESS,
         payload
     }
 }
 
+// GET LIST VIDEO
+export function getVideos(payload) {
+    return {
+        type: types.GET_VIDEOS_MOVIE,
+        payload
+    }
+}
 export function getVideosSuccess(payload) {
     return {
-        type: types.GET_VIDEOS_SUCCESS,
+        type: types.GET_VIDEOS_MOVIE_SUCCESS,
+        payload
+    }
+}
+
+export function getInfoMovie(payload) {
+    return {
+        type: types.GET_INFO_MOVIE,
+        payload
+    }
+}
+
+export function getInfoMovieSuccess(payload) {
+    return {
+        type: types.GET_INFO_MOVIE_SUCCESS,
+        payload
+    }
+}
+
+export function getCreditsMovie(payload) {
+    return {
+        type: types.GET_CREDITS_MOVIE,
+        payload
+    }
+}
+
+export function getCreditsMovieSuccess(payload) {
+    return {
+        type: types.GET_CREDITS_MOVIE_SUCCESS,
         payload
     }
 }

@@ -10,16 +10,18 @@ export const fetchMovies = (type) =>
 export const fetchTV = (type) =>
     `https://api.themoviedb.org/3/tv/${type}?api_key=${API_KEY}&language=en-US&page=1`;
 
-export const fetchSingleMovie = (movieId) =>
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`;
-
-export const fetchSingleMovieCredits = (movieId) =>
-    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;
-
-
 
 export const fetchImageOriginal = (imageUrl) => `https://image.tmdb.org/t/p/original${imageUrl}`;
 export const fetchImageW500 = (imageUrl) => `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
-export const fetchVideos = (id) => `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+
+// DETAIL MOVIE
+export const fetchVideos = (movieId) =>
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`;
+
+export const fetchInfoMovie = (movieId) =>
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`;
+
+export const fetchCreditsMovie = (movieId) =>
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;
 

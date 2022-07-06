@@ -1,82 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from "react-redux";
-import Header from './components/header';
-import Carousel from './components/carousel';
-import TopMovies from './components/topMovies';
-import './assets/styles/globalStyles.scss';
-import { getListPopularMovies, getListTopRateMovies, getListUpcomingMovies } from './redux/actions';
-import Footer from './components/footer';
-import Loading from './components/loading';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DetailMovie from './pages/detail';
+import Home from './pages/home';
 
+function App() {
 
-function App({
-  getListPopularMovies,
-  popularMovies,
-  getListTopRateMovies,
-  topRateMovies,
-  getListUpcomingMovies,
-  upcomingMovies,
-  loading }) {
-
-  const [showLoading, setShowLoading] = useState(true);
-
-  useEffect(() => {
-    getListPopularMovies();
-    getListTopRateMovies();
-    getListUpcomingMovies();
-  }, [])
-
-  if (!loading) {
-    setTimeout(() => {
-      setShowLoading(false);
-    }, 10000)
-  }
-
-  console.log(loading);
   return (
     <React.Fragment>
-      <div className='relative'>
+      <BrowserRouter>
+        <Routes>
 
-        {/* HEADER */}
-        <Header />
-
-        {/* CAROUSEL */}
-        <Carousel listMovies={popularMovies} />
-
-        {/* LISTFILM */}
-        <TopMovies listMovies={popularMovies} name={'Popular'} />
-
-        {/* LISTFILM */}
-        <TopMovies listMovies={topRateMovies} name={'Top Rate'} />
-
-        {/* LISTFILM */}
-        <TopMovies listMovies={upcomingMovies} name={'Upcoming'} />
-
-        {/* FOOTER */}
-        <Footer />
-
-        {/* LOADING */}
-        {showLoading && <Loading />}
-      </div>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/movie/:id" element={<DetailMovie />}></Route>
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
 
     </React.Fragment>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loading: state.movies.loading,
-    popularMovies: state.movies.popularMovies,
-    topRateMovies: state.movies.topRateMovies,
-    upcomingMovies: state.movies.upcomingMovies,
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getListPopularMovies: () => dispatch(getListPopularMovies()),
-    getListTopRateMovies: () => dispatch(getListTopRateMovies()),
-    getListUpcomingMovies: () => dispatch(getListUpcomingMovies()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
