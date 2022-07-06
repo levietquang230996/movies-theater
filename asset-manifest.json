@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movies-theater/static/css/main.c6fe0283.css",
-    "main.js": "/movies-theater/static/js/main.d195c12f.js",
+    "main.js": "/movies-theater/static/js/main.a6b13bcb.js",
     "static/js/787.d7e7aaf3.chunk.js": "/movies-theater/static/js/787.d7e7aaf3.chunk.js",
     "static/media/slide_cinema1.jpg": "/movies-theater/static/media/slide_cinema1.a9ac449bd7490f39d6df.jpg",
     "static/media/slick.svg": "/movies-theater/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -10,11 +10,11 @@
     "static/media/slick.woff": "/movies-theater/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/movies-theater/index.html",
     "main.c6fe0283.css.map": "/movies-theater/static/css/main.c6fe0283.css.map",
-    "main.d195c12f.js.map": "/movies-theater/static/js/main.d195c12f.js.map",
+    "main.a6b13bcb.js.map": "/movies-theater/static/js/main.a6b13bcb.js.map",
     "787.d7e7aaf3.chunk.js.map": "/movies-theater/static/js/787.d7e7aaf3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c6fe0283.css",
-    "static/js/main.d195c12f.js"
+    "static/js/main.a6b13bcb.js"
   ]
 }
